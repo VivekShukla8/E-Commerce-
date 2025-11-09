@@ -21,13 +21,21 @@ const allowed = [
 app.use(
   cors({
     origin: (origin, cb) => {
-      // allow same-origin/no-origin (e.g., curl, server-side) and whitelisted origins
       if (!origin || allowed.includes(origin)) return cb(null, true);
       return cb(new Error("Not allowed by CORS"));
     },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.options(
+  "*",
+  cors({
+    origin: (origin, cb) => {
+      if (!origin || allowed.includes(origin)) return cb(null, true);
+      return cb(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
   })
 );
 
