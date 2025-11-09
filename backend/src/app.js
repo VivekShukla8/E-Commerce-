@@ -9,20 +9,24 @@ import couponRoutes from "./routes/coupon.route.js";
 import paymentRoutes from "./routes/payment.route.js";
 import analyticsRoutes from "./routes/analytics.route.js";
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 const allowed = [
-  "*",
   "https://e-commerce-git-main-vivek-shuklas-projects-8ebbc1b2.vercel.app",
   "https://e-commerce-gamma-gules-42.vercel.app",
   "http://localhost:5173",
 ];
 
+const app = express();
+
 app.use(cors({ origin: allowed, credentials: true }));
 app.options("*", cors({ origin: allowed, credentials: true }));
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+
 
 app.use("/user", userRoutes);
 app.use("/products", productRoutes);
