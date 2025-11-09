@@ -1,13 +1,8 @@
+// src/middlewares/multer.middleware.js
 import multer from "multer";
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "backend/public");
-  },
-
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
+const storage = multer.memoryStorage();
+export const upload = multer({
+  storage,
+  // optional hardening
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
 });
-
-export const upload = multer({ storage });
