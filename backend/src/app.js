@@ -13,10 +13,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors({
-  origin: "*",
-  credentials: false
-}));
+const allowed = [
+  "https://e-commerce-gamma-gules-42.vercel.app/",
+  "http://localhost:5173",
+];
 
 
 app.use("/user", userRoutes);
