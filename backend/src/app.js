@@ -19,11 +19,11 @@ app.use(cors({
 }));
 
 
-app.use("/api/user", userRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/cart", cartRoutes);
-app.use("/api/coupons", couponRoutes);
-app.use("/api/payments", paymentRoutes);
-app.use("/api/analytics", analyticsRoutes);
+app.use("/user", userRoutes);
+app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
+app.use("/coupons", couponRoutes);
+app.use("/payments", paymentRoutes);
+app.use("/analytics", analyticsRoutes);
 
 export default app;
