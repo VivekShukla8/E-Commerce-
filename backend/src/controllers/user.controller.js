@@ -5,6 +5,9 @@ import { User } from "../models/user.model.js";
 import redis from "../lib/redis.js";
 import jwt from "jsonwebtoken";
 
+// at top of user.controller.js (before options)
+const isProd = process.env.NODE_ENV === "production";
+
 const options = {
   httpOnly: true,
   sameSite: isProd ? "none" : "lax",
