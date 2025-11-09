@@ -13,37 +13,21 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 const allowed = [
   "https://e-commerce-git-main-vivek-shuklas-projects-8ebbc1b2.vercel.app",
   "https://e-commerce-gamma-gules-42.vercel.app",
   "http://localhost:5173",
 ];
 
-app.use(
-  cors({
-    origin: (origin, cb) => {
-      if (!origin || allowed.includes(origin)) return cb(null, true);
-      return cb(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-  })
-);
-
-app.options(
-  "*",
-  cors({
-    origin: (origin, cb) => {
-      if (!origin || allowed.includes(origin)) return cb(null, true);
-      return cb(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-  })
-);
+app.use(cors({ origin: allowed, credentials: true }));
+app.options("*", cors({ origin: allowed, credentials: true }));
 
 app.use("/user", userRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/coupons", couponRoutes);
+app.get("/health", (req, res) => res.json({ ok: true }));
 app.use("/payments", paymentRoutes);
 app.use("/analytics", analyticsRoutes);
 
