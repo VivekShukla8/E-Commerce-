@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const allowed = [
-  "https://e-commerce-gamma-gules-42.vercel.app/",
+  "https://e-commerce-etiqu336g-vivek-shuklas-projects-8ebbc1b2.vercel.app",
+  "https://e-commerce-gamma-gules-42.vercel.app",
   "http://localhost:5173",
 ];
 

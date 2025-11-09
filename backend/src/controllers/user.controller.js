@@ -7,9 +7,8 @@ import jwt from "jsonwebtoken";
 
 const options = {
   httpOnly: true,
-  cookies: true,
-  sameSite: "strict",
-  secure: process.env.NODE_ENV === "production",
+  sameSite: isProd ? "none" : "lax",
+  secure: isProd,
 };
 
 const generateTokens = async (userId) => {
