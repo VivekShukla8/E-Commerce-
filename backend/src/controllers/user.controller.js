@@ -33,15 +33,15 @@ export const signup = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    const isUser = await User.findOne({ email });
-    if (isUser) {
-      throw new ApiError(400, "This email is already registered");
-    }
+    // const isUser = await User.findOne({ email });
+    // if (isUser) {
+    //   throw new ApiError(400, "This email is already registered");
+    // }
 
-    const mailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    if (!mailRegex.test(email)) {
-      throw new ApiError(400, "Enter valid email address");
-    }
+    // const mailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    // if (!mailRegex.test(email)) {
+    //   throw new ApiError(400, "Enter valid email address");
+    // }
 
     const user = await User.create({ name, email, password });
     if (!user) {

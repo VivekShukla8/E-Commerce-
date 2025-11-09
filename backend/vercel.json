@@ -1,2 +1,11 @@
 {
+  "rewrites": [
+    { "source": "/user/:path*", "destination": "/api/user/:path*" },
+    { "source": "/products/:path*", "destination": "/api/products/:path*" },
+    { "source": "/cart/:path*", "destination": "/api/cart/:path*" },
+    { "source": "/coupons/:path*", "destination": "/api/coupons/:path*" },
+    { "source": "/payments/:path*", "destination": "/api/payments/:path*" },
+    { "source": "/analytics/:path*", "destination": "/api/analytics/:path*" },
+    { "source": "/health", "destination": "/api/health" }
+  ]
 }
